@@ -1,32 +1,7 @@
 import React from 'react';
-import { Avatar, Button, Card, Container, Grid, Icon, Link, makeStyles, TextField, Typography } from '@material-ui/core';
-
-const useStyles = makeStyles({
-    containermt: {
-        marginTop: 30
-    },
-    card: {
-        padding:30
-    },
-    avatar: {
-        backgroundColor: '#3a0ca3',
-        width: 80,
-        height: 80
-    }, 
-    icon: {
-        fontSize: 60
-    },
-    form: {
-        marginTop: 40,
-        marginBotton: 40
-    },
-    gridmb: {
-        marginBotton: 20
-    },
-    link:{
-        marginTop: 8
-    }
-})
+import { Avatar, Button, Card, Container, Grid, Icon, TextField, Typography } from '@material-ui/core';
+import useStyles from '../../theme/useStyles';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const classes = useStyles();
@@ -54,7 +29,7 @@ const Login = () => {
                             </Grid>                            
                         </Grid>
                         <Link
-                            href="/"
+                            to="/registrar"
                             variant="body1"
                             className={classes.link}>
                             ¿No tienes cuenta?, Registrate
