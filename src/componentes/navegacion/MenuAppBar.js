@@ -45,7 +45,7 @@ const MenuAppBar = () => {
                             </div>                        
                         </Drawer>
                         <div className={classes.grow}>
-                            <Link to="/" color="inherit" underline="none" className={classes.linkAppBarLogo} underline="none">
+                            <Link to="/" color="inherit" className={classes.linkAppBarLogo} underline="none">
                                 <Icon className={classes.mr} fontSize="large">store</Icon>
                                 <Typography variant="h5">VAXI SHOP</Typography>
                             </Link>
