@@ -13,6 +13,8 @@ import OrdenCompra from './componentes/pantallas/OrdenCompra';
 import Perfil from './componentes/seguridad/Perfil';
 import Usuarios from './componentes/pantallas/admin/Usuarios';
 import EditarUsuario from './componentes/pantallas/admin/EditarUsuario';
+import ListaProductos from './componentes/pantallas/admin/ListaProductos';
+import AgregarProducto from './componentes/pantallas/admin/AgregarProducto';
 
 function App() 
 {
@@ -30,6 +32,8 @@ function App()
         <Route exact path="/perfil" component={Perfil} />  
         <Route exact path="/admin/usuarios" component={Usuarios} />             
         <Route exact path="/admin/usuario/:id" component={EditarUsuario} />    
+        <Route exact path="/admin/listaProductos" component={ListaProductos} />   
+        <Route exact path="/admin/agregarProducto" component={AgregarProducto} />                     
         <Route exact path="/" component={Producto}/>        
       </Switch>
       </Router>
