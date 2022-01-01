@@ -11,7 +11,8 @@ import CarritoCompras from './componentes/pantallas/CarritoCompras';
 import ProcesoCompra from './componentes/pantallas/ProcesoCompra';
 import OrdenCompra from './componentes/pantallas/OrdenCompra';
 import Perfil from './componentes/seguridad/Perfil';
-
+import Usuarios from './componentes/pantallas/admin/Usuarios';
+import EditarUsuario from './componentes/pantallas/admin/EditarUsuario';
 
 function App() 
 {
@@ -20,14 +21,16 @@ function App()
       <Router>
       <MenuAppBar/>
       <Switch>
-        <Route exac path="/login" component={Login}/>
-        <Route exac path="/registrar" component={RegistrarUsuario}/>
-        <Route exac path="/detalleProducto/:id" component={DetalleProducto}/>
+        <Route exact path="/login" component={Login}/>
+        <Route exact path="/registrar" component={RegistrarUsuario}/>
+        <Route exact path="/detalleProducto/:id" component={DetalleProducto}/>
         <Route exact path="/carrito" component={CarritoCompras} />
         <Route exact path="/procesoCompra" component={ProcesoCompra} />
         <Route exact path="/ordenCompra/:id" component={OrdenCompra} />
-        <Route exact path="/perfil" component={Perfil} />        
-        <Route exac path="/" component={Producto}/>        
+        <Route exact path="/perfil" component={Perfil} />  
+        <Route exact path="/admin/usuarios" component={Usuarios} />             
+        <Route exact path="/admin/usuario/:id" component={EditarUsuario} />    
+        <Route exact path="/" component={Producto}/>        
       </Switch>
       </Router>
     </ThemeProvider>    

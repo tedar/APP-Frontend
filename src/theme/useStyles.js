@@ -213,6 +213,12 @@ const useStyles = makeStyles({
         width: 175,
         height: 175,
         backgroundColor: "#F2F2F2"
+    },
+    checkbox : {
+        display: "block",
+        padding: 0,
+        marginTop: 5,
+        marginBottom: 5
     }
 })
 
