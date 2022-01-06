@@ -1,13 +1,22 @@
 import { Button, Container, Grid, Icon, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@material-ui/core';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { productoArray } from '../../../data/dataPrueba';
 import useStyles from '../../../theme/useStyles';
 
 const ListaProductos = (props) => {
     const classes = useStyles();
 
+    const navigate = useNavigate();
+
     const agregarProducto = () =>{
-        props.history.push("/admin/agregarProducto");
+        navigate("/admin/agregarProducto");
+        //props.history.push("/admin/agregarProducto");
+    }
+
+    const editaProducto = (id) => {
+        navigate("/admin/editarProducto/" + id);
+        //props.history.push("/admin/editarProducto/" + id);
     }
 
     const productos = productoArray;
@@ -54,7 +63,8 @@ const ListaProductos = (props) => {
                             <TableCell>
                                 <Button
                                 variant="contained"
-                                color="primary">
+                                color="primary"
+                                onClick={() => editaProducto(producto.key)}>
                                     <Icon>edit</Icon>
                                 </Button>
                                 <Button

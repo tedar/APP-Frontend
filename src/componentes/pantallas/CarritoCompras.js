@@ -2,6 +2,7 @@ import { Button, CardMedia, Container, Divider, Grid, Icon, IconButton, MenuItem
 import React from 'react';
 import { productoArray } from '../../data/dataPrueba';
 import useStyles from '../../theme/useStyles';
+import { useNavigate } from "react-router-dom";
 
 const CarritoCompras = (props) => {
     const miArray = productoArray;
@@ -10,9 +11,12 @@ const CarritoCompras = (props) => {
         suma += prod.precio 
     });
 
+    const navigate = useNavigate();
     
     const realizarCompra = () => {
-        props.history.push("/procesoCompra");
+        //props.history.push("/procesoCompra");
+
+        navigate('/procesoCompra');
     }
     
     const classes = useStyles();

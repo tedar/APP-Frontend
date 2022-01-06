@@ -1,13 +1,17 @@
 import { Button, Container, Grid, Icon, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@material-ui/core';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import useStyles from '../../../theme/useStyles';
 
 const Usuarios = (props) => {
     const classes = useStyles();
 
+    const navigate = useNavigate();
+
 const editarUsuario = () => {
     const id = "23";
-    props.history.push("/admin/usuario/" + id);
+    navigate("/admin/usuario/" + id);
+    //props.history.push("/admin/usuario/" + id);
 }
 
     return (

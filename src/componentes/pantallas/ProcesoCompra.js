@@ -2,10 +2,13 @@ import { Button, CardMedia, Container, Divider, FormControl, FormControlLabel, F
     Grid, Paper, Radio, RadioGroup, Step, StepLabel, Stepper, Table, TableBody, 
     TableCell, TableContainer, TableRow, TextField, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useStyles from '../../theme/useStyles';
 
 const ProcesoCompra = (props) => {
     const [activeStep, setActiveStep] = useState(1);
+
+    const navigate = useNavigate();
 
     const continuarProceso = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1)
@@ -17,7 +20,8 @@ const ProcesoCompra = (props) => {
 
     const realizarPedido = () => {
         const idCompra = "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed";
-        props.history.push("/ordenCompra/"+ idCompra);
+        //props.history.push("/ordenCompra/"+ idCompra);
+        navigate("/ordenCompra/"+ idCompra);
     }
 
     

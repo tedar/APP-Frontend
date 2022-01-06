@@ -1,13 +1,17 @@
 import { Button, CardMedia, Container, Divider, Grid, Paper, Table, TableBody, TableCell, 
     TableContainer, TableRow, Typography } from '@material-ui/core';
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import useStyles from '../../theme/useStyles';
 
 const OrdenCompra = (props) => {
-    const {id} = props.match.params;
-    const mensajeEnvio = "Entregado";
+
+    const mensajeEnvio = "No Entregado";
     const mensajePago = "Pagado";
     const classes = useStyles();
+    const {id} = useParams();
+   // const {id} = props.match.params;
+
     return (
         <Container className={classes.containermt}>
             <Typography variant="h5" className={classes.text_title}>
@@ -136,6 +140,8 @@ const OrdenCompra = (props) => {
                                 </TableRow>
                                 <TableRow>
                                     <TableCell colSpan={2}>
+                                        {/*boton para el usuario*/}
+                                        {/*
                                         <Button
                                         variant="contained"
                                         color="primary"
@@ -151,6 +157,14 @@ const OrdenCompra = (props) => {
                                         fullWidth
                                         >
                                             Tarjeta de Credito o Debito
+                                        </Button>*/}
+                                        {/*boton para el admin*/}
+                                        <Button
+                                        variant="contained"
+                                        color="primary"
+                                        size="large"
+                                        fullWidth>
+                                            MARCAR COMO ENTREGADO
                                         </Button>
                                     </TableCell>
                                 </TableRow>

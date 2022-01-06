@@ -2,12 +2,17 @@ import { Avatar, Button, Container, Divider, Grid, Icon, Table, TableBody, Table
 import React from 'react';
 import useStyles from '../../theme/useStyles';
 import ImageUploader from 'react-images-upload';/* importamos ImageU ploader */
+import { useNavigate } from 'react-router-dom';
 
 const Perfil = (props) => {
     const classes = useStyles();
+
+    const navigate = useNavigate();
+
     const verDetalles = () => {
         const id = "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed";
-        props.history.push("/ordenCompra/"+ id);
+        //props.history.push("/ordenCompra/"+ id);
+        navigate("/ordenCompra/"+ id);
     }
     return (
         <Container className={classes.containermt}>

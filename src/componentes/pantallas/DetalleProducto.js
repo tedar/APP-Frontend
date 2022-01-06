@@ -1,12 +1,16 @@
 import { Button, CardMedia, Container, Grid, MenuItem, Paper, Table, TableBody, 
     TableCell, TableContainer, TableRow, TextField, Typography } from '@material-ui/core';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import useStyles from '../../theme/useStyles';
 
 const DetalleProducto = (props) => {
 
+    const navigate = useNavigate();
+
     const agregarCarrito = () => {
-        props.history.push("/carrito");
+        //props.history.push("/carrito");
+        navigate("/carrito");
     }
 
     const classes = useStyles();
