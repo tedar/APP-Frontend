@@ -1,22 +1,21 @@
 import React, {useState} from 'react';
 import { Avatar, Button, Card, Container, Grid, Icon, TextField, Typography } from '@material-ui/core';
 import useStyles from '../../theme/useStyles';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { registrarUsuario } from '../../actions/UsuarioAction';
 
 const clearUsuario = {
-    nombre1 : '',
-    apellidos : '',
+    nombre : '',
+    apellido : '',
     email: '',
-    password : ''    
+    password : '',    
+    username: ''
 }
 
-const RegistrarUsuario = () => {
-    const [usuario, setUsuario] = useState({
-        nombre1 : '',
-        apellidos : '',
-        email: '',
-        password : ''
-    })
+const RegistrarUsuario = (props) => {
+    const [usuario, setUsuario] = useState(clearUsuario)
+
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -27,11 +26,22 @@ const RegistrarUsuario = () => {
     }   
 
     const guardarUsuario = () => {                     
-        console.log("Mi nombre es: " +  usuario.nombre1);       
-        console.log("Mi apellidos es: " + usuario.apellidos);
+        /*
+        console.log("Mi nombre es: " +  usuario.nombre);       
+        console.log("Mi apellidos es: " + usuario.apellido);
         console.log("Mi email es: " + usuario.email)        ;
         console.log("Mi password es: " + usuario.password)   ;     
         setUsuario(clearUsuario);
+        */
+        console.log("voy a registrar al usuario: ", usuario);
+        
+        registrarUsuario(usuario).then(response => {
+           console.log("registrarUsuario respuesta del servidor: ", response);
+           window.localStorage.setItem("token", response.data.token);
+           
+           navigate('/');
+       });
+       
     }       
 
     const classes = useStyles();
@@ -52,8 +62,8 @@ const RegistrarUsuario = () => {
                                     label="Nombre"
                                     variant="outlined"
                                     fullWidth
-                                    name="nombre1"
-                                    value={usuario.nombre1}
+                                    name="nombre"
+                                    value={usuario.nombre}
                                     onChange={handleChange}
                                     ></TextField>
                                 </Grid>
@@ -62,11 +72,21 @@ const RegistrarUsuario = () => {
                                     label="Apellidos"
                                     variant="outlined"
                                     fullWidth
-                                    name="apellidos"
-                                    value={usuario.apellidos}
+                                    name="apellido"
+                                    value={usuario.apellido}
                                     onChange={handleChange}                                    
                                     ></TextField>
-                                </Grid>         
+                                </Grid>        
+                                <Grid item md={12} xs={12} className={classes.gridmb}>
+                                    <TextField
+                                    label="Nombre de usuario"
+                                    variant="outlined"
+                                    fullWidth
+                                    name="username"
+                                    value={usuario.username}
+                                    onChange={handleChange}                                    
+                                    ></TextField>
+                                </Grid>                                  
                                 <Grid item md={12} xs={12} className={classes.gridmb}>
                                     <TextField
                                     label="Email"

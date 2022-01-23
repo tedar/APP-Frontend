@@ -1,10 +1,43 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Avatar, Button, Card, Container, Grid, Icon, TextField, Typography } from '@material-ui/core';
 import useStyles from '../../theme/useStyles';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { loginUsuario } from '../../actions/UsuarioAction';
 
-const Login = () => {
+const clearUsuario = {
+    email: '',
+    pasword: ''
+}
+
+const Login = (props) => {
     const classes = useStyles();
+
+    const [usuario, setUsuario] = useState(clearUsuario);
+
+    const navigate = useNavigate();
+
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+        setUsuario(prev => ({
+            ...prev,
+            [name]:value
+        }))
+    }   
+
+    const loginEventoUsuario = () => {
+        loginUsuario(usuario).then(response => {
+            if (response.status === 200)
+            {
+                window.localStorage.setItem("token", response.data.token);
+                console.log("el login fue exitoso", response.data);
+                navigate('/');
+            }
+            else{
+                console.log("credenciales erroreeas");
+            }
+        });
+    }
+
     return (
     <Container className={classes.containermt}>
         <Grid container justify="center">
@@ -17,15 +50,22 @@ const Login = () => {
                     <form className={classes.form}>
                         <Grid container spacing={2}>
                             <Grid item xs={12} className={classes.gridmb}>
-                                <TextField label="Email" variant="outlined" fullWidth type="email">
+                                <TextField label="Email" variant="outlined" fullWidth type="email"
+                                    name="email"
+                                    value={usuario.email}
+                                    onChange={handleChange}>
                                 </TextField>
                             </Grid>
                             <Grid item xs={12} className={classes.gridmb}>
-                                <TextField label="Password" variant="outlined" fullWidth type="password">
+                                <TextField label="Password" variant="outlined" fullWidth type="password"
+                                    name="password"
+                                    value={usuario.password}
+                                    onChange={handleChange}>
                                 </TextField>                                                                
                             </Grid>
                             <Grid item xs={12} className={classes.gridmb}>
-                                <Button variant="contained" fullWidth color="primary">Entrar</Button>
+                                <Button variant="contained" fullWidth color="primary"
+                                onClick={loginEventoUsuario}>Entrar</Button>
                             </Grid>                            
                         </Grid>
                         <Link
